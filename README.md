@@ -352,6 +352,7 @@ telegram:
 
 <a href="https://github.com/0xBugatti"><img src="https://cdn.simpleicons.org/github/e6edf3" width="38" alt="GitHub" /></a>&nbsp;
 <a href="https://twitter.com/0xbugatti"><img src="https://cdn.simpleicons.org/x/1DA1F2" width="38" alt="X" /></a>&nbsp;
-<a href="https://linkedin.com/in/0xbugatti"><img src="https://cdn.simpleicons.org/linkedin/0A66C2" width="38" alt="LinkedIn" /></a>&nbsp;
+<a href="https://linkedin.com/in/0xbugatti"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@latest/icons/linkedin.svg" width="38" style="background:#0A66C2;padding:6px;border-radius:4px" alt="LinkedIn" /></a>
+
 
 </div>
