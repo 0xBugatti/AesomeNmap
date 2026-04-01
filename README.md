@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/0xBugatti/AesomeNmap/main/.github/logo.svg" width="420" alt="Awesomenmap">
+<img src="https://raw.githubusercontent.com/0xBugatti/AesomeNmap/refs/heads/main/.github/logo-light.svg" width="420" alt="Awesomenmap">
 
 <br>
 
