@@ -23,13 +23,8 @@
 - [Alternative: Vulscan Integration](#-alternative-vulscan-integration)
 - [NSE Script Collections](#-nse-script-collections)
 - [CVE Search CLI Tools](#-cve-search-cli-tools)
-- [Specialized Scanners — DVRs & SCADA](#-specialized-scanners--dvrs--scada)
 - [Dashboard & Task Automation](#-dashboard--task-automation)
 - [Reporting & Notifications](#-reporting--notifications)
-- [Quick Start](#-quick-start)
-- [Workflow](#-workflow)
-- [Contributing](#-contributing)
-- [License](#-license)
 
 ---
 
@@ -68,16 +63,15 @@ Awesomenmap/
 │   │   ├── vulscan/                   # Vulscan alternative engine
 │   │   ├── log4shell_nse.nse          # Log4Shell (CVE-2021-44228) detector
 │   │   ├── ms-exchange-version.nse    # MS Exchange version enumeration
-│   │   ├── gitlab-version.nse         # GitLab version enumeration
+│   │   └── gitlab-version.nse         # GitLab version enumeration
 │   │
 │   └── cli/                           # CVE & exploit search tools
 │       ├── getsploit/                 # Vulners.com exploit downloader
 │       └── search_vulns/              # Multi-source CVE searcher
 │
-│
 └── visualize/
     ├── nmap-dashboard.xsl
-    ├── nmap-formatter/
+    └── nmap-formatter/
 ```
 
 ---
@@ -185,9 +179,6 @@ These community-maintained collections provide additional NSE scripts that expan
 | **gitlab-version** | [righel/gitlab-version-nse](https://github.com/righel/gitlab-version-nse) | GitLab instance version detection and associated CVE identification, helping prioritize remediation for self-hosted DevOps infrastructure |
 | **Official Nmap Scripts** | [nmap/nmap/scripts](https://github.com/nmap/nmap/tree/master/scripts) | The canonical upstream repository — always ensure your local scripts are at least as recent as this tree |
 
-
-This script iterates over every collection listed in `automation/nmap_presets.yaml`, clones or updates each repository, and copies compatible `.nse` files into the `scripts/nse/` directory while preserving directory attribution in each file's header comments.
-
 ---
 
 ## 🔎 CVE Search CLI Tools
@@ -225,6 +216,8 @@ cd search_vulns && pip install -r requirements.txt
 # Search
 python search_vulns.py -q "OpenSSH 7.2"
 ```
+
+---
 
 ## 📊 Dashboard & Task Automation
 
@@ -295,19 +288,20 @@ Using nmap-formatter, raw Nmap XML output is converted into Graphviz DOT files t
 
 ```bash
 # Generate graph
-python post_process/graphize.py -i scan_output.xml -o topology.dot
+python visualize/nmap-formatter/graphize.py -i scan_output.xml -o topology.dot
 dot -Tpng topology.dot -o topology.png
 ```
 
 ### Telegram Bot Notifications
 
+> **Inspired by:** [queencitycyber/nucleiUI](https://github.com/queencitycyber/nucleiUI)
 
 Critical findings are pushed to a Telegram bot in real time, ensuring that security teams are alerted the moment a high-severity vulnerability is discovered. The notification includes the target host, affected service, CVE identifiers, CVSS scores, and direct links to the full report.
 
 **Configuration:**
 
 ```yaml
-# automation/nmap_presets.yaml
+# nmap_presets.yaml
 telegram:
   bot_token: "YOUR_BOT_TOKEN"
   chat_id: "YOUR_CHAT_ID"
@@ -316,19 +310,16 @@ telegram:
   report_base_url: "https://your-dashboard.example.com/reports/"
 ```
 
-
-
 ---
 
 <div align="center">
 
-**Built with 🔥 by the security community — for the security community.**
+**Built with 🔥 by @0xbugatti & the security community — for the security community.**
 
 <br><br>
 
 <a href="https://github.com/0xbugatti">
-
-  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path fill="#FFFFFF" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#24292e"/><path fill="#FFFFFF" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
 </a>&nbsp;&nbsp;&nbsp;&nbsp;
 <a href="https://twitter.com/0xbugatti">
   <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path fill="#1DA1F2" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -343,11 +334,4 @@ telegram:
   <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path fill="#FFDD00" d="M18.5 3H6c-1.1 0-2 .9-2 2v1h17V5c0-1.1-.9-2-2-2zm.5 5H4l1 10c.1.9.9 1.5 1.8 1.5h9.4c.9 0 1.7-.6 1.8-1.5l1-10zM12 16c-1.7 0-3-1.3-3-3s1.3-3 3-3 3 1.3 3 3-1.3 3-3 3zm0-4.5c-.8 0-1.5.7-1.5 1.5s.7 1.5 1.5 1.5 1.5-.7 1.5-1.5-.7-1.5-1.5-1.5z"/><path fill="#000" d="M12 11.5c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5zM20 8H4l1 10c.1.9.9 1.5 1.8 1.5h9.4c.9 0 1.7-.6 1.8-1.5L20 8zm-1.5 9l-.8 1h-11l-.8-1L5 9h14l-.5 8z"/></svg>
 </a>
 
-<br><br>
-
-**Built with 🔥 by @0xbugatti the security community — for the security community.**
-
 </div>
-
-
-
