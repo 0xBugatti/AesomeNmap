@@ -69,30 +69,15 @@ Awesomenmap/
 │   │   ├── log4shell_nse.nse          # Log4Shell (CVE-2021-44228) detector
 │   │   ├── ms-exchange-version.nse    # MS Exchange version enumeration
 │   │   ├── gitlab-version.nse         # GitLab version enumeration
-│   │   └── custom/                    # Custom/community NSE scripts
-│   │       ├── dvr_pocsuite.nse       # DVR vulnerability PoCs
-│   │       └── scada_enum.nse         # SCADA protocol enumeration
 │   │
 │   └── cli/                           # CVE & exploit search tools
 │       ├── getsploit/                 # Vulners.com exploit downloader
 │       └── search_vulns/              # Multi-source CVE searcher
 │
-├── automation/
-│   ├── scan_runner.sh                 # Main orchestration script
-│   ├── task_poller.sh                 # Polls dashboard for new tasks
-│   ├── nmap_presets.yaml              # Scan profile definitions
-│   └── post_process/                  # Post-scan hooks
-│       ├── html_report.py             # HTML report generator
-│       ├── graphize.py                # nmap-formatter graph output
-│       └── telegram_notify.sh         # Telegram bot notifier
 │
-├── dashboard/
-│   └── README.md                      # Dashboard setup & usage guide
-│
-└── docs/
-    ├── setup_guide.md                 # Full installation walkthrough
-    ├── script_reference.md            # Per-script usage documentation
-    └── contribution_guide.md          # How to contribute scripts
+└── visualize/
+    ├── nmap-dashboard.xsl
+    ├── nmap-formatter/
 ```
 
 ---
@@ -200,13 +185,6 @@ These community-maintained collections provide additional NSE scripts that expan
 | **gitlab-version** | [righel/gitlab-version-nse](https://github.com/righel/gitlab-version-nse) | GitLab instance version detection and associated CVE identification, helping prioritize remediation for self-hosted DevOps infrastructure |
 | **Official Nmap Scripts** | [nmap/nmap/scripts](https://github.com/nmap/nmap/tree/master/scripts) | The canonical upstream repository — always ensure your local scripts are at least as recent as this tree |
 
-### Bulk Sync
-
-To pull all collections at once, use the provided sync helper:
-
-```bash
-bash automation/sync_collections.sh
-```
 
 This script iterates over every collection listed in `automation/nmap_presets.yaml`, clones or updates each repository, and copies compatible `.nse` files into the `scripts/nse/` directory while preserving directory attribution in each file's header comments.
 
@@ -247,35 +225,6 @@ cd search_vulns && pip install -r requirements.txt
 # Search
 python search_vulns.py -q "OpenSSH 7.2"
 ```
-
----
-
-## 📡 Specialized Scanners — DVRs & SCADA
-
-### DVR / IoT Vulnerability PoCs
-
-> **Source:** [foggyspace/NsePocsuite-lua](https://github.com/foggyspace/NsePocsuite-lua)
-
-A collection of NSE scripts designed to detect known vulnerabilities in Digital Video Recorders (DVRs), IP cameras, and other embedded IoT devices. These devices are frequently exposed to the internet with outdated firmware, making them prime targets for botnet recruitment and surveillance compromise. The scripts cover popular brands including Hikvision, Dahua, and generic Chinese-manufactured DVRs.
-
-```bash
-cd scripts/nse/custom/
-git clone https://github.com/foggyspace/NsePocsuite-lua.git
-cp NsePocsuite-lua/*.nse ./
-```
-
-### SCADA & ICS Enumeration
-
-SCADA (Supervisory Control and Data Acquisition) and ICS (Industrial Control Systems) environments require specialized Nmap scripts capable of speaking industrial protocols such as Modbus, DNP3, Siemens S7, and BACnet. These scripts are included in the official Nmap distribution under the `ics` category and can be supplemented with community contributions. When scanning SCADA environments, always ensure you have explicit written authorization and understand the potential impact of active scanning on operational technology networks, as even benign probes can trigger safety systems or cause service disruptions.
-
-```bash
-# Official ICS scripts (included with Nmap)
-nmap --script "ics-*" -p 102,502,47808 <target>
-```
-
-> **⚠️ Warning:** Never scan operational SCADA/ICS networks without explicit, documented authorization. Even passive enumeration can disrupt critical infrastructure.
-
----
 
 ## 📊 Dashboard & Task Automation
 
@@ -352,7 +301,6 @@ dot -Tpng topology.dot -o topology.png
 
 ### Telegram Bot Notifications
 
-> **Inspired by:** [queencitycyber/nucleiUI](https://github.com/queencitycyber/nucleiUI)
 
 Critical findings are pushed to a Telegram bot in real time, ensuring that security teams are alerted the moment a high-severity vulnerability is discovered. The notification includes the target host, affected service, CVE identifiers, CVSS scores, and direct links to the full report.
 
@@ -436,25 +384,6 @@ A typical end-to-end workflow within the Awesomenmap ecosystem follows these ste
 
 ---
 
-## 🤝 Contributing
-
-Contributions are welcome and encouraged. This project thrives on community input and collective knowledge sharing. Whether you have written a custom NSE script, discovered a useful scanning technique, or improved the automation pipeline, your contribution helps the entire security community.
-
-**Ways to contribute:**
-
-- **New NSE Scripts** — Submit a PR adding your `.nse` file to `scripts/nse/custom/` with documentation
-- **Script Updates** — Open an issue or PR when an upstream script is updated and needs syncing
-- **Bug Fixes** — Report and fix issues with the automation scripts or documentation
-- **Documentation** — Improve existing guides, add usage examples, or translate documentation
-- **Scan Presets** — Share your optimized `nmap_presets.yaml` profiles for specific use cases
-
-Please read [docs/contribution_guide.md](docs/contribution_guide.md) for detailed guidelines before submitting your first contribution.
-
----
-
-## ⚖️ License
-
-This repository is released under the **MIT License**. Individual scripts retain their original licenses as specified by their respective authors. Always verify the license of any third-party script before deploying it in a commercial or compliance-regulated environment.
 
 ---
 
