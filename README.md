@@ -14,12 +14,12 @@
 
 <br>
 
-<a href="https://nmap.org/"><img src="https://cdn.simpleicons.org/nmap/46A046" width="40" alt="Nmap" title="Nmap" /></a>&nbsp;&nbsp;
+<a href="https://nmap.org/"><img src="https://nmap.org/images/sitelogo-nmap.svg" width="40" alt="Nmap" title="Nmap" /></a>&nbsp;&nbsp;
 <a href="https://www.lua.org/"><img src="https://cdn.simpleicons.org/lua/2C2D72" width="40" alt="Lua" title="Lua (NSE Scripts)" /></a>&nbsp;&nbsp;
 <a href="https://www.python.org/"><img src="https://cdn.simpleicons.org/python/3776AB" width="40" alt="Python" title="Python" /></a>&nbsp;&nbsp;
 <a href="https://www.docker.com/"><img src="https://cdn.simpleicons.org/docker/2496ED" width="40" alt="Docker" title="Docker" /></a>&nbsp;&nbsp;
 <a href="https://grafana.com/"><img src="https://cdn.simpleicons.org/grafana/F46800" width="40" alt="Grafana" title="Grafana Dashboard" /></a>&nbsp;&nbsp;
-<a href="https://graphviz.org/"><img src="https://cdn.simpleicons.org/graphviz/E10098" width="40" alt="Graphviz" title="Graphviz Topology" /></a>&nbsp;&nbsp;
+<a href="https://graphviz.org/"><img src="https://img.shields.io/badge/Graphviz-DOT-E10098?style=flat&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PGNpcmNsZSBjeD0iNiIgY3k9IjYiIHI9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxOCIgY3k9IjYiIHI9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxMiIgY3k9IjE4IiByPSIyIiBmaWxsPSIjZmZmIi8+PGxpbmUgeDE9IjYiIHkxPSI4IiB4Mj0iMTIiIHkyPSIxNiIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjEuNSIvPjxsaW5lIHgxPSIxOCIgeTE9IjgiIHgyPSIxMiIgeTI9IjE2IiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMS41Ii8+PC9zdmc+" height="28" alt="Graphviz" title="Graphviz Topology" /></a>&nbsp;&nbsp;
 <a href="https://www.sqlite.org/"><img src="https://cdn.simpleicons.org/sqlite/003B57" width="40" alt="SQLite" title="SQLite" /></a>&nbsp;&nbsp;
 <a href="https://telegram.org/"><img src="https://cdn.simpleicons.org/telegram/26A5E4" width="40" alt="Telegram" title="Telegram Alerts" /></a>&nbsp;&nbsp;
 <a href="https://www.linux.org/"><img src="https://cdn.simpleicons.org/linux/FCC624" width="40" alt="Linux" title="Linux" /></a>&nbsp;&nbsp;
