@@ -319,7 +319,8 @@ xsltproc -o scan_out.html nmap-dashboard.xsl outscan.xml
 Raw Nmap XML output is converted into Graphviz DOT files that render as network topology diagrams — making it immediately clear which hosts are interconnected, which services are exposed, and how vulnerabilities cluster across the target network.
 
 ```bash
-xsltproc -o scan_out.html nmap-dashboard.xsl outscan.xml
+./nmap-formatter dot ../../out-ex.xml --file ../../out-.dot --html-dark-mode
+cat ../../out-.dot | dot -Tsvg > diagram.svg
 ```
 
 <div align="center">
