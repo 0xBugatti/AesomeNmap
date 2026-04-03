@@ -304,6 +304,14 @@ Scan results are transformed into polished, interactive HTML reports using the i
 - CVE reference links with CVSS scores and exploit availability indicators
 - Sortable and filterable tables for efficient triage
 
+```bash
+xsltproc -o scan_out.html nmap-dashboard.xsl outscan.xml
+```
+
+<div align="center">
+<img src=".github/dash-command.jpg" width="700" alt="Dashboard HTML Report Generation" />
+</div>
+
 ### Graphviz Network Graphs
 
 > **Source:** [vdjagilev/nmap-formatter](https://github.com/vdjagilev/nmap-formatter?tab=readme-ov-file)
@@ -311,9 +319,16 @@ Scan results are transformed into polished, interactive HTML reports using the i
 Raw Nmap XML output is converted into Graphviz DOT files that render as network topology diagrams — making it immediately clear which hosts are interconnected, which services are exposed, and how vulnerabilities cluster across the target network.
 
 ```bash
-python visualize/nmap-formatter/graphize.py -i scan_output.xml -o topology.dot
-dot -Tpng topology.dot -o topology.png
+xsltproc -o scan_out.html nmap-dashboard.xsl outscan.xml
 ```
+
+<div align="center">
+<img src=".github/diag-command.jpg" width="700" alt="Graphviz Diagram Generation" />
+</div>
+
+<div align="center">
+<img src=".github/diagram.svg" width="700" alt="Network Topology Diagram" />
+</div>
 
 ### Telegram Bot Notifications
 
